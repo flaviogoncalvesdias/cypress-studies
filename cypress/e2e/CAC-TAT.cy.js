@@ -197,7 +197,7 @@ describe('Central de atendimento', function () {
      * cy.request -> permite fazer requisições HTTP e validar o retorno
      * 
      */
-    it.only('Faz uma requisição HTTP', function () {
+    it('Faz uma requisição HTTP', function () {
         cy.request('https://qaacademy.com.br')
         .should(function(response){ // função anonima
             const {status, statusText, body} = response // desestruturação de objeto
@@ -206,6 +206,16 @@ describe('Central de atendimento', function () {
             expect(body).to.include('QA Academy')   // expect -> valida se o valor é igual ao esperado
         })
     })
+
+    it('Exibe e esconde Gatinho', function () {
+
+        cy.get('#cat')
+            .should('not.be.visible')
+            .invoke('show')
+            .should('be.visible')
+
+    })
+    
 
 
 })
